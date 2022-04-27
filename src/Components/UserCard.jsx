@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as UserIcon } from "../icons/user.svg";
 import { ReactComponent as More } from "../icons/expand_more.svg";
 import { ReactComponent as Less } from "../icons/expand_less.svg";
-
+import moment from "moment";
 const UserCard = ({ user, index }) => {
   const [showing, setShowing] = useState(null);
   const [open, setOpen] = useState(false);
@@ -11,6 +11,7 @@ const UserCard = ({ user, index }) => {
       setOpen(false);
       return setShowing(null);
     }
+    setShowing(null);
     setShowing(index);
     setOpen(true);
   }
@@ -24,6 +25,13 @@ const UserCard = ({ user, index }) => {
     } else {
       return "#000000";
     }
+  }
+  function formatPhone(str) {
+    //looking at .json no edge cases all numbers have no whitespace or need to be trimmed
+    let first = str.slice(0, 3);
+    let second = str.slice(3, 6);
+    let third = str.slice(6, 9);
+    return `(${first}) ${second}-${third} `;
   }
   return (
     <div
@@ -54,15 +62,21 @@ const UserCard = ({ user, index }) => {
             <h3 className="text-[10px] font-semibold text-[#4A4A4A] mt-4">
               Phone
             </h3>
-            <p className="text-[10px] text-[#4A4A4A]">{user.phone}</p>
+            <p className="text-[10px] text-[#4A4A4A]">
+              {formatPhone(user.phone)}
+            </p>
             <h3 className="text-[10px] font-semibold text-[#4A4A4A] mt-4">
               Created At
             </h3>
-            <p className="text-[10px] text-[#4A4A4A]">{user.createdAt}</p>
+            <p className="text-[10px] text-[#4A4A4A]">
+              {moment(user.createdAt).format("M/D/YY h:mm A")}
+            </p>
             <h3 className="text-[10px] font-semibold text-[#4A4A4A] mt-4">
               Last Logged In
             </h3>
-            <p className="text-[10px] text-[#4A4A4A]">{user.lastLoggedIn}</p>
+            <p className="text-[10px] text-[#4A4A4A]">
+              {moment(user.lastLoggedIn).format("M/D/YY h:mm A")}
+            </p>
           </div>
         ) : null}
       </div>
