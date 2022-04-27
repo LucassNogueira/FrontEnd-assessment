@@ -54,12 +54,15 @@ const UserCard = ({ user, index }) => {
             <h3 className="text-[10px] font-semibold text-[#4A4A4A] mt-4">
               Phone
             </h3>
+            <p className="text-[10px] text-[#4A4A4A]">{user.phone}</p>
             <h3 className="text-[10px] font-semibold text-[#4A4A4A] mt-4">
               Created At
             </h3>
+            <p className="text-[10px] text-[#4A4A4A]">{user.createdAt}</p>
             <h3 className="text-[10px] font-semibold text-[#4A4A4A] mt-4">
               Last Logged In
             </h3>
+            <p className="text-[10px] text-[#4A4A4A]">{user.lastLoggedIn}</p>
           </div>
         ) : null}
       </div>
