@@ -1,10 +1,11 @@
 import Header from "./Components/Header";
+import UserCards from "./Components/UserCards";
 
 function App() {
   return (
     <>
       <Header />
-      <div className="text-3xl"> Heloo</div>
+      <UserCards />
     </>
   );
 }
