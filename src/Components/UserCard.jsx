@@ -13,16 +13,17 @@ const UserCard = ({ user, index }) => {
   }
 
   return (
-    <div className="relative flex">
-      <UserIcon width={50} height={50} />
-      <div>
+    <div className="relative flex shadow-lg  bg-white mt-4 mx-3 h-20 justify-start  ">
+      <UserIcon width={50} height={50} className="mt-4" />
+
+      <div className="mt-4 ml-3">
         <h1 className="font-semibold text-[12px] text-[#4A4A4A]">
           {user.firstName + " " + user.lastName}
         </h1>
         <h2 className="text-[10px] text-[#4A4A4A]">{user.role}</h2>
         <h3 className="text-[10px]  ">
           <a
-            className=" text-[#7E7E7E] hover:text-blue-700"
+            className=" text-[#7E7E7E] hover:text-blue-700 visited:text-[#7E7E7E]"
             href={`mailto:${user.email}`}
           >
             {user.email}
@@ -31,9 +32,17 @@ const UserCard = ({ user, index }) => {
       </div>
 
       {showing !== user.id ? (
-        <More fill="#7E7E7E" onClick={() => toggle(index)} />
+        <More
+          fill="#7E7E7E"
+          onClick={() => toggle(index)}
+          className="mt-7 absolute right-5"
+        />
       ) : (
-        <Less fill="#7E7E7E" onClick={() => toggle(index)} />
+        <Less
+          fill="#7E7E7E"
+          className="mt-7 absolute right-5"
+          onClick={() => toggle(index)}
+        />
       )}
     </div>
   );
