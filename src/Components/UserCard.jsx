@@ -18,6 +18,8 @@ const UserCard = ({ user, index }) => {
       return "#68AAAB";
     } else if (role === "Viewer") {
       return "#7E7E7E";
+    } else {
+      return "#000000";
     }
   }
   return (
