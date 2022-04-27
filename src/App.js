@@ -3,7 +3,7 @@ import UserCards from "./Components/UserCards";
 
 function App() {
   return (
-    <div className="bg-[#f1f5f6] h-screen">
+    <div className="bg-[#f1f5f6]">
       <Header />
       <UserCards />
     </div>

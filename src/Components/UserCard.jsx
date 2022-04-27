@@ -1,20 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { ReactComponent as UserIcon } from "../icons/user.svg";
 import { ReactComponent as More } from "../icons/expand_more.svg";
 import { ReactComponent as Less } from "../icons/expand_less.svg";
 import moment from "moment";
-const UserCard = ({ user, index }) => {
-  const [showing, setShowing] = useState(null);
-  const [open, setOpen] = useState(false);
-  function toggle(index) {
-    if (showing == index) {
-      setOpen(false);
-      return setShowing(null);
-    }
-    setShowing(null);
-    setShowing(index);
-    setOpen(true);
-  }
+const UserCard = ({ user, index, showing, toggle }) => {
   function roleFill(role) {
     if (role === "Administrator") {
       return "#2081C3";
@@ -35,7 +24,7 @@ const UserCard = ({ user, index }) => {
   }
   return (
     <div
-      onClick={() => toggle(index)}
+      onClick={() => toggle(index, console.log(index))}
       className={`relative flex shadow-lg  bg-white  mt-4 mx-3 pb-4 pt-4`}
     >
       <UserIcon width={50} height={50} fill={roleFill(user.role)} />
@@ -53,7 +42,7 @@ const UserCard = ({ user, index }) => {
             {user.email}
           </a>
         </p>
-        {open ? (
+        {showing === user.id ? (
           <div className="h-[190px] w-[200px] ">
             <h3 className="text-[10px] font-semibold text-[#4A4A4A] mt-4">
               Address
