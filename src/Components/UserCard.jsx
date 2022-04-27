@@ -11,10 +11,23 @@ const UserCard = ({ user, index }) => {
     }
     setShowing(index);
   }
-
+  function findFill(role) {
+    if (role === "Administrator") {
+      return "#2081C3";
+    } else if (role === "User") {
+      return "#68AAAB";
+    } else if (role === "Viewer") {
+      return "#7E7E7E";
+    }
+  }
   return (
     <div className="relative flex shadow-lg  bg-white mt-4 mx-3 h-20 justify-start  ">
-      <UserIcon width={50} height={50} className="mt-4" />
+      <UserIcon
+        width={50}
+        height={50}
+        className="mt-4"
+        fill={findFill(user.role)}
+      />
 
       <div className="mt-4 ml-3">
         <h1 className="font-semibold text-[12px] text-[#4A4A4A]">
